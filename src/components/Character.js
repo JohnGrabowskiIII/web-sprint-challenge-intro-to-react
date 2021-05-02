@@ -19,7 +19,11 @@ const CharName = styled.h3`
     font-size: 22px;
     margin: 25px 0px;
     color: ${props => props.select === true ? 'red' : 'white'};
-    text-decoration: ${props => props.select === true ? 'underline' : 'initial'}
+    text-decoration: ${props => props.select === true ? 'underline' : 'initial'};
+
+    :hover {
+        color: red;
+    }
 `
 
 function Character(props) {
