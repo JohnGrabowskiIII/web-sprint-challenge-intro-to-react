@@ -1,14 +1,41 @@
+import styled from 'styled-components';
+
+import FlexBuilder from './FlexBuilder'
+
+const BoldP = styled.p`
+    font-weight: bold;
+
+    * {
+        font-weight: normal;
+    }
+`
 
 function Info(props) {
+
     const {char} = props;
 
     return (
         <>
-        <p>Born: {char.birth_year} </p>
-        <p>Gender: {char.gender} </p>
-        <p>Height: {char.height} </p>
-        <p>Hair Color: {char.hair_color} </p>
-        <p>Eye Color: {char.eye_color} </p>
+            <FlexBuilder>
+                <BoldP>Born:</BoldP>
+                <p>{char.birth_year}</p>
+            </FlexBuilder>
+            <FlexBuilder>
+                <BoldP>Gender:</BoldP>
+                <p>{char.gender}</p>
+            </FlexBuilder>
+            <FlexBuilder>
+                <BoldP>Height:</BoldP>
+                <p>{char.height}</p>
+            </FlexBuilder>
+            <FlexBuilder>
+                <BoldP>Hair Color:</BoldP>
+                <p>{char.hair_color}</p>
+            </FlexBuilder>
+            <FlexBuilder>
+                <BoldP>Eye Color:</BoldP>
+                <p>{char.eye_color}</p>
+            </FlexBuilder>
         </>
     )
 }

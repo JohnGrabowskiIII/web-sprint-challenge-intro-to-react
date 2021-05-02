@@ -1,4 +1,26 @@
 import Info from './Info'
+import styled from 'styled-components';
+import ships from '../images/starwarspattern2.jpg'
+
+const ContainerDiv = styled.div`
+    border: 8px solid red;
+    border-radius: 20px;
+    background-image: url(${ships});
+    background-size: contain;
+    width: 230px;
+    margin: 30px auto;
+`
+
+const SelectedInfoContainer = styled.div`
+    width: 100%;
+`
+
+const CharName = styled.h3`
+    font-size: 22px;
+    margin: 25px 0px;
+    color: ${props => props.select === true ? 'red' : 'white'};
+    text-decoration: ${props => props.select === true ? 'underline' : 'initial'}
+`
 
 function Character(props) {
 
@@ -12,19 +34,19 @@ function Character(props) {
     }
 
     const charactersList = charactersArray.map((char, i) => {
-        if (selectedCharacter !== char) return <h3 key={i} onClick={e => clickHandle(e, i)} >{char.name}</h3>
+        if (selectedCharacter !== char) return <CharName key={i} select={false} onClick={e => clickHandle(e, i)} >{char.name}</CharName>
         return (
-            <div key={i}>
-                <h3 onClick={e => clickHandle(e, i)} >{char.name}</h3>
+            <SelectedInfoContainer key={i}>
+                <CharName select={true} onClick={e => clickHandle(e, i)} >{char.name}</CharName>
                 <Info char={char} />
-            </div>
+            </SelectedInfoContainer>
         )
     });
 
 return (
-    <>
+    <ContainerDiv>
     {charactersList}
-    </>
+    </ContainerDiv>
 )
 
 }

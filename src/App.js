@@ -1,8 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
 import axios from 'axios';
+import styled from 'styled-components'
+import clones from './images/starwarspattern.jpg'
 
 import Character from './components/Character';
+
+const BackgroundDiv = styled.div`
+  background-image: url(${clones});
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -18,18 +31,17 @@ const App = () => {
   useEffect(() => {
     axios.get('https://swapi.dev/api/people')
       .then(res => {
-        console.log(res.data);
         setCharactersArray(res.data);
       })
       .catch(err => console.log(err));
   }, []);
 
   return (
-    <div className="App">
+    <BackgroundDiv>
       <Character charactersArray={charactersArray}
       selectedCharacter={selectedCharacter}
       setSelectedCharacter={setSelectedCharacter} />
-    </div>
+    </BackgroundDiv>
   );
 }
 
